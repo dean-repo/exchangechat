@@ -69,10 +69,20 @@ func welcome(ctx *gin.Context) {
 	})
 }
 
+func index(ctx *gin.Context) {
+	ctx.HTML(http.StatusOK, "index.tmpl", gin.H{
+		"title": "Please provide the OpenAI API KEY",
+	})
+}
+
 func main() {
 	router := gin.Default()
+
+	router.LoadHTMLGlob("templates/*")
+
+	router.GET("/", index)
 	router.POST("/sendMessage", sendMessage)
-	router.GET("/", welcome)
+	router.GET("/json", welcome)
 
 	port := os.Getenv("HTTP_PLATFORM_PORT")
 	if port == "" {
