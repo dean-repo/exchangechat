@@ -73,6 +73,7 @@ func welcome(ctx *gin.Context) {
 func index(ctx *gin.Context) {
 	ctx.HTML(http.StatusOK, "index.tmpl", gin.H{
 		"title": "Please provide the OpenAI API KEY",
+		"link":  "/json",
 	})
 }
 
