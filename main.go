@@ -10,6 +10,7 @@ import (
 	"strings"
 
 	"github.com/gin-gonic/gin"
+	"gopkg.in/fsnotify.v1"
 )
 
 func sendMessage(c *gin.Context) {
