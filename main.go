@@ -62,10 +62,17 @@ func sendMessage(c *gin.Context) {
 
 }
 
+func welcome(ctx *gin.Context) {
+	ctx.JSON(http.StatusOK, gin.H{
+		"foo": "bar",
+	})
+}
+
 func main() {
 	router := gin.Default()
 	router.POST("/sendMessage", sendMessage)
-	router.Run("localhost:8080")
+	router.GET("/", welcome)
+	router.Run("127.0.0.1:8080")
 }
 
 type PromptBody struct {
