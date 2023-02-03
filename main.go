@@ -6,6 +6,7 @@ import (
 	"io"
 	"log"
 	"net/http"
+	"os"
 	"strings"
 
 	"github.com/gin-gonic/gin"
@@ -72,7 +73,13 @@ func main() {
 	router := gin.Default()
 	router.POST("/sendMessage", sendMessage)
 	router.GET("/", welcome)
-	router.Run("127.0.0.1:8080")
+
+	port := os.Getenv("HTTP_PLATFORM_PORT")
+	if port == "" {
+		port = "8080"
+	}
+
+	router.Run("127.0.0.1:" + port)
 }
 
 type PromptBody struct {
