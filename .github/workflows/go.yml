@@ -25,7 +25,7 @@ jobs:
       run: go test
       
     - name: Deploy to Azure
-      uses: Azure/webapps-deploy@v2
+      uses: Azure/webapps-deploy@v3
       with:
         # Name of the Azure Web App
         app-name: exchangechat
